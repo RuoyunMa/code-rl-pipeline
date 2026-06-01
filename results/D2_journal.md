@@ -1,6 +1,6 @@
 # D2 Journal — 2026-05-19
 
-**Big picture:** Ran the entire pipeline (D2 env recovery → D7 DPO → D8 GRPO fallback → D13 AWQ) in one autonomous session while Ruoyun slept. Full results in `results/final_summary.md`. M2/M4/M6 acceptance met; M5 (GRPO) partial — GRPO at this data scale didn't beat DPO, a real finding to discuss.
+**Big picture:** Ran the entire pipeline (D2 env recovery → D7 DPO → D8 GRPO fallback → D13 AWQ) in one autonomous session while the user slept. Full results in `results/final_summary.md`. M2/M4/M6 acceptance met; M5 (GRPO) partial — GRPO at this data scale didn't beat DPO, a real finding to discuss.
 
 ## Timeline (UTC)
 
@@ -63,36 +63,36 @@
 - `results/m2_sft.md` — SFT eval + M2 verdict
 - `results/m4_dpo.md` — DPO eval + trl 0.24 compat issues
 - `results/quantization_benchmark.md` — bf16 vs INT4 throughput/latency
-- `results/final_summary.md` — full pipeline summary, lessons learned, interview narrative
+- `results/final_summary.md` — full pipeline summary, lessons learned, key takeaways
 - `results/D2_journal.md` — this file
 
 ### Memory files (~/.claude/.../memory/)
 - `MEMORY.md` index updated
 - `feedback_separate_envs.md` — same-env install of competing inference libs is a trap
-- `feedback_show_monitor_commands.md` — give Ruoyun ssh tail commands for long ops
+- `feedback_show_monitor_commands.md` — give the user ssh tail commands for long ops
 - `project_d1_ended_with_backlog.md` — superseded; D2 covered most of D1's backlog
 
 ## Remaining work (post-D2)
 
 | Priority | Item | Blocker |
 |---|---|---|
-| Now | `gh auth login` + push to GitHub | needs interactive auth (Ruoyun) |
-| Now | `wandb login` | needs API key (Ruoyun) |
+| Now | `gh auth login` + push to GitHub | needs interactive auth (the user) |
+| Now | `wandb login` | needs API key (the user) |
 | Soon | `sudo apt install docker.io nvidia-container-toolkit` → verl Docker GRPO | needs sudo password |
 | Soon | M1 "verl Docker green" milestone | depends on docker |
 | Optional | Longer GRPO with verl + vllm rollout integration (1000+ steps) | depends on verl Docker |
-| Optional | Tech blog draft on DPO-vs-GRPO finding | nothing — Ruoyun's task |
-| Optional | LinkedIn outreach to 3-5 Trae engineers | Ruoyun's task |
+| Optional | Tech blog draft on DPO-vs-GRPO finding | nothing — the user's task |
+| Optional | Blog draft to externalize the findings | future task |
 | Optional | 7B variant on Lambda Cloud ($150-240) | budget |
 | Optional | SWE-bench Verified small subset eval | could add |
 
-## Things I learned tonight that future-Ruoyun should remember
+## Things I learned tonight that future-the user should remember
 
 1. **trl 0.24 + transformers 5.5 has rough edges.** Two stub patches required (`warnings_issued`, `TRANSFORMERS_CACHE` in llm_blender). If you upgrade either, retest the patches. Best long-term fix: pin trl to a version that's officially compat with transformers 5.x (probably 1.x once it's mature).
 2. **The pip pypi-default torch is cu130 in 2026.** The `--index-url cu129` pattern from older guides is now actively wrong — installs wrong wheel for current vllm.
 3. **conda-forge cuda-nvcc activate hooks need `set +u`.** Don't enable nounset in scripts that activate conda envs.
 4. **For 1.5B SFT, Unsloth gives ~21 min for 2 epochs on 5090.** Plan budgets ~4h for SFT — that was an A100-pessimistic estimate. 5090 + Unsloth is way faster.
-5. **DPO won this round. GRPO needs more scale.** Don't take "GRPO is the production target" too literally; for small-scale demos, DPO is the right tool. The Trae story can be: "I'd reach for GRPO + verl when I have 10K+ prompts and an integrated rollout server; otherwise DPO."
+5. **DPO won this round. GRPO needs more scale.** Don't take "GRPO is the production target" too literally; for small-scale demos, DPO is the right tool. Reach for GRPO + verl at 10K+ prompts with an integrated rollout server; otherwise DPO.
 
 ## How to resume (3rd session onward)
 

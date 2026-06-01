@@ -3,7 +3,7 @@
 Replaces the original `14day_plan.md` after the 2026-05-19 pivot. The original is
 preserved for history; the actual execution from here on follows this file.
 
-## Triggers for the pivot (Ruoyun's input)
+## Triggers for the pivot (user's input)
 
 1. **Contamination concern** — HumanEval / MBPP are old (2021); Qwen2.5-Coder-1.5B
    (2024-09) probably saw structurally-similar problems in 5.5T pretraining tokens
@@ -68,7 +68,7 @@ So the 7B sweep can include LoRA r=32/64/128 (full bf16 base) and QLoRA r=32/128
 
 **Realistic budget (sequential)**: blocks 1-7 = ~18h. Plenty of headroom in 24h.
 
-## Reporting milestones (Ruoyun asked for "report after each block")
+## Reporting milestones (user asked for "report after each block")
 
 After each block: print 1-paragraph status + key numbers + next-up.
 
@@ -114,4 +114,4 @@ outputs/
 - Install docker / nvidia-container-toolkit (needs sudo)
 - Run SWE-Bench-Verified (depends on docker)
 - Modify CLAUDE.md (project context — only update when user signs off)
-- Anything that uses Ruoyun's API keys (W&B, HF token)
+- Anything that uses user's API keys (W&B, HF token)

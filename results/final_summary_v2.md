@@ -128,7 +128,7 @@ QLoRA (nf4 base) matched bf16 LoRA across all benchmarks at 7B scale. **Train me
 
 ### 5. Per-repo LoRA is a real product win and currently under-exploited industry-wide
 
-Industry survey (`per_repo_training.md`): Cursor / Copilot / Sourcegraph Cody all rely on RAG + long context. Only Tabnine's enterprise tier has explicit "project training". Per-repo LoRA at our scale shows **2× internal symbol recall** without regressing general ability. With multi-adapter hot-swap (vLLM `LoRARequest` API), one base model + N adapters can serve N codebases. **This is a Trae-shaped product opportunity that no public OSS demo has nailed**.
+Industry survey (`per_repo_training.md`): Cursor / Copilot / Sourcegraph Cody all rely on RAG + long context. Only Tabnine's enterprise tier has explicit "project training". Per-repo LoRA at our scale shows **2× internal symbol recall** without regressing general ability. With multi-adapter hot-swap (vLLM `LoRARequest` API), one base model + N adapters can serve N codebases. **This is a real product opportunity that no public OSS demo has nailed**.
 
 ### 6. Same-env inference framework install is a trap (legacy lesson)
 
@@ -197,21 +197,22 @@ scripts/
 - **Terminal-Bench 2.0**: skipped — agent benchmark, our SFT-only models won't score.
 - **pass@k with n=10**: skipped — LCB already serves as a higher-resolution discriminator.
 - **vLLM LoRA hot-swap demo**: per_repo_training.md spec'd this; not built yet (it's an infra demo, not a research result).
-- **Tech blog draft**: Ruoyun task.
+- **Tech blog draft**: future task.
 - **GitHub push**: needs `gh auth login`.
 - **W&B logging backfill**: not pursued; all numbers are in result jsons.
 
-## Recommended Trae interview narrative
+## Key findings (decomposed)
 
-> "I rebuilt a SFT/DPO/GRPO/AWQ post-training pipeline at two scales (1.5B and 7B Qwen2.5-Coder) on a single RTX 5090, then re-benchmarked on a contamination-resistant suite (LiveCodeBench v6 with post-cutoff filtering, rather than HumanEval which is partially absorbed by Qwen's 5.5T pretraining).
->
-> Top findings, decomposed for the LiveCodeBench-post-cutoff metric (1.5B base = 2.94% → 7B base = 14.71% → 7B DPO = 17.65%):
-> (1) **+11.77pp comes from scaling base 1.5B → 7B alone, with no training**. Training adds +2.94pp.
-> (2) **Magicoder SFT does nothing at 7B**: 7B base 14.71% → 7B SFT 16.18% is within noise on every metric, and MBPP actually drops 0.4pp. At 1.5B the same dataset gave +5pp LCB — generic instruction SFT is absorbed by Qwen's 5.5T pretraining as base improves.
-> (3) **DPO/GRPO are the only real post-training lift at 7B**: +1.47pp on top of SFT, +2.94pp on top of base. DPO and GRPO converged to the **identical** end-state (38.29% LCB, 17.65% post-cutoff) — at this scale they're equivalent.
-> (4) **QLoRA at 7B matches bf16 LoRA** across all metrics while halving VRAM (24→14 GB). Default to QLoRA on single-GPU; SFT itself is questionable at 7B, save the memory for RL.
-> (5) **LoRA rank doesn't transfer across model sizes**: r=128 outperformed r=32 by 5.6pp LCB at 1.5B, a wash at 7B.
-> (6) **Per-repo LoRA on FastAPI doubled internal-symbol recall (18.8% → 40.5%) without regressing generic benchmarks** — a direction Cursor / Copilot / Cody have NOT publicly explored, and a clear fit for Trae's IDE-assistant product surface.
->
-> Single-GPU compute budget: ~9 hours of GPU time produced all of this, spanning 6 SFT configs at 1.5B + 4 SFT configs at 7B + DPO + GRPO + AWQ + per-repo POC + a base baseline I should have included from the start (lesson: measure base BEFORE training)."
+This project ran a SFT/DPO/GRPO/AWQ post-training pipeline at two scales (1.5B and 7B Qwen2.5-Coder) on a single RTX 5090, with a contamination-resistant eval suite (LiveCodeBench v6 + post-cutoff filtering, in addition to HumanEval/MBPP which are partially absorbed by Qwen's 5.5T pretraining).
+
+Decomposed for the LiveCodeBench-post-cutoff metric (1.5B base = 2.94% → 7B base = 14.71% → 7B DPO = 17.65%):
+
+1. **+11.77pp comes from scaling base 1.5B → 7B alone, with no training**. Training adds +2.94pp.
+2. **Magicoder SFT does nothing at 7B**: 7B base 14.71% → 7B SFT 16.18% is within noise on every metric, and MBPP actually drops 0.4pp. At 1.5B the same dataset gave +5pp LCB — generic instruction SFT is absorbed by Qwen's 5.5T pretraining as base improves.
+3. **DPO/GRPO are the only real post-training lift at 7B**: +1.47pp on top of SFT, +2.94pp on top of base. DPO and GRPO converged to the **identical** end-state (38.29% LCB, 17.65% post-cutoff) — at this scale they're equivalent.
+4. **QLoRA at 7B matches bf16 LoRA** across all metrics while halving VRAM (24→14 GB). Default to QLoRA on single-GPU; SFT itself is questionable at 7B, save the memory for RL.
+5. **LoRA rank doesn't transfer across model sizes**: r=128 outperformed r=32 by 5.6pp LCB at 1.5B, a wash at 7B.
+6. **Per-repo LoRA on FastAPI doubled internal-symbol recall (18.8% → 40.5%) without regressing generic benchmarks** — a direction Cursor / Copilot / Cody have not publicly explored, and a clear product opportunity for IDE-assistant products.
+
+Single-GPU compute budget: ~9 hours of GPU time produced all of this, spanning 6 SFT configs at 1.5B + 4 SFT configs at 7B + DPO + GRPO + AWQ + per-repo POC + a base baseline that should have been included from the start (lesson: measure base BEFORE training).
 

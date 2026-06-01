@@ -30,7 +30,7 @@
 
 - **Only 425 preference pairs** — well below the 14day_plan target of ~2000. At pairs-per-problem=6 cap, we hit ~128 problems (of 374 MBPP-train problems) that had both passing and failing completions; many problems were "all pass" or "all fail" given the 56.9% per-completion pass rate. More pairs would come from: larger n (n=8 vs n=4), wider temp sweep (T=0.6, 0.8, 1.0), or adding HumanEval-style problems to the rollout source.
 - **27 DPO steps** is very short — train loss barely moved (0.6935 → 0.6919). The model is barely DPO-trained, yet HumanEval ticked up 2 problems (121 → 123). This is at the noise floor (1.2% on 164 problems). For a real demo-quality result, want 2-5x more pairs and 100-300 steps.
-- For the interview / demo narrative, the framing is: "**full SFT → DPO pipeline runs end-to-end with measurable positive delta; gradient signal is real but small due to data scale, validating the architecture before scaling**."
+- The honest framing: **full SFT → DPO pipeline runs end-to-end with measurable positive delta; gradient signal is real but small due to data scale, validating the architecture before scaling**.
 
 ## Files
 

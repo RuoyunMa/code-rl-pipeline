@@ -1,11 +1,11 @@
 # code-rl-pipeline — 14-Day Execution Plan
 
 **Project:** End-to-end coding LLM post-training demo (SFT → DPO → GRPO + AWQ INT4)
-**Owner:** Ruoyun
+**Owner:** @RuoyunMa
 **Hardware:** Single **RTX 5090 32 GB** (Blackwell sm_120)  ·  hardware ready Wed 2026-05-13
 **Start:** D1 = first weekend after install ⇒ **2026-05-16 (Sat)**  ·  **End:** **2026-05-31 (Sun)**
 **Pace:** Weekdays 4h / Weekends 8h  ·  ~80 work hours  ·  ~50 GPU hours
-**North star:** Pipeline runs end-to-end + measurable positive delta + GitHub-ready + interview-ready. Not SOTA.
+**North star:** Pipeline runs end-to-end + measurable positive delta + GitHub-ready + writeup-ready. Not SOTA.
 
 > **Hardware-change note (2026-05-11):** original plan assumed A100 40 GB. Audit on 5090 32 GB:
 > only **GRPO via verl** needs real config tightening; SFT and DPO fit comfortably (peak 6-13 GB)
@@ -108,7 +108,7 @@
 - [x] **AWQ INT4 quantization** on `outputs/dpo_merged` → `outputs/dpo_awq_int4` (1.1 GB vs 3.0 GB FP16, 2.7× smaller on disk)
 - [x] **vLLM throughput bench** (`results/quantization_benchmark.md`): bf16 7925 tok/s vs INT4 3412 tok/s — **INT4 is 2.3× SLOWER**. Counterintuitive but explainable (1.5B fits in cache → INT4 dequant overhead dominates over bandwidth savings). Real finding for the demo narrative.
 - [x] **INT4 accuracy**: HumanEval 73.78% (-1.22pp), MBPP 64.59% (-1.17pp). Quality hit is small but real.
-- [ ] **PM** — Draft Chinese tech blog. Deferred for Ruoyun (manual writing task).
+- [ ] **PM** — Draft Chinese tech blog. Deferred (manual writing task).
 
 #### D14 · Sun 2026-05-31  ← **M6 deadline · DELIVERY**
 - [ ] **AM** — Compile W&B screenshots + comparison table + demo screenshots → `results/final_summary.md`
@@ -260,8 +260,7 @@ code-rl-pipeline/
 │   ├── quantization_benchmark.md
 │   └── final_summary.md
 └── deliverables/
-    ├── resume_bullets.md
-    ├── interview_talking_points.md
+    ├── README.md
     └── blog_draft_zh.md
 ```
 

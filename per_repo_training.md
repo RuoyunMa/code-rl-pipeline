@@ -1,7 +1,6 @@
-# Per-repo training — staff MLE design doc
+# Per-repo training — design doc + industry survey
 
 **Status:** design + industry survey. Implementation queued for Block E3+ in `plan_v3.md`.
-**Author:** drafted as if Ruoyun is the staff MLE proposing this work to the Trae team.
 
 ## 1 · Problem statement
 
@@ -46,7 +45,7 @@ substitute.
 3. Per-repo data quality is the bottleneck (not enough samples per repo without synthetic generation)
 4. Compute cost (per-customer fine-tuning seemed expensive — though LoRA changes this)
 
-**Trae angle:** ByteDance has unique data leverage — internal monorepos at TikTok / Lark / Douyin are huge, with consistent code review history. A per-repo fine-tuning workflow that runs as a CI job on push gives every team an adapter tracked to HEAD. This is genuinely differentiated infra-side work, not a Composer 2 / Copilot feature parity.
+**Production angle:** organizations with large internal monorepos and consistent code-review history have unique data leverage. A per-repo fine-tuning workflow that runs as a CI job on push gives every team an adapter tracked to HEAD. This is genuinely differentiated infra-side work, not a Composer 2 / Copilot feature parity.
 
 ## 3 · Hypothesis & success criteria
 
@@ -88,7 +87,7 @@ Picks:
 | 1 | `pallets/flask` | ~16K | comprehensive | Mature, idiomatic, good docstrings |
 | 2 | `psf/requests` | ~10K | comprehensive | Smaller, faster turnaround |
 | 3 | `pydantic/pydantic` | ~50K | extensive | More complex; tests cover behavior |
-| 4 | (custom) a Ruoyun-controlled small repo | ~5K | wide | Sanity / data quality check |
+| 4 | (custom) a the user-controlled small repo | ~5K | wide | Sanity / data quality check |
 
 Start with Flask. Each repo run takes ~3h end-to-end (FIM gen, train, eval, demo).
 
@@ -129,7 +128,7 @@ Memory budget on 1.5B base (5090 32 GB) — should fit comfortably:
 
 Time: ~5-10 min for 1-5k samples × 2 epochs on 1.5B.
 
-**Pushing 5090 to limits** (per Ruoyun's ask): train multiple repo adapters concurrently in
+**Pushing 5090 to limits** (per the user's ask): train multiple repo adapters concurrently in
 the same process via gradient accumulation across mixed-repo batches. Or run a single
 heavy variant: per-repo r=64, 5 epochs, with 7B base. ~30-45 min per repo at 7B.
 
@@ -211,12 +210,12 @@ Memory + compute: pytest subprocess per candidate × num_gen × per_step → ver
 
 **Total E3:** 3-4h for core (E3a-d), 5-7h with stretches.
 
-## 6 · Why this is Trae-worthy
+## 6 · Why this is worth pursuing
 
-1. **Direct product alignment**: this is what an IDE assistant DOES at inference time. No company is bragging about doing it via FT — opportunity to be first.
-2. **Combines everything we've shown**: LoRA, vLLM serving, eval rigor, verifiable RL — but composed for a real product feature.
-3. **Adapter-swap serving infra** is non-trivial. ByteDance internal would care a lot — multi-tenant inference for engineers' codebases.
-4. **Honest narrative**: "RAG is necessary but not sufficient; here's what FT adds." Doesn't pretend to replace context retrieval — claims a complementary improvement.
+1. **Direct product alignment**: this is what an IDE assistant does at inference time. No company is publicly demonstrating it via FT — opportunity to be first.
+2. **Combines everything else in this repo**: LoRA, vLLM serving, eval rigor, verifiable RL — composed for a real product feature.
+3. **Adapter-swap serving infra** is non-trivial: multi-tenant inference for many codebases on one base model is a real systems problem.
+4. **Honest framing**: "RAG is necessary but not sufficient; here's what FT adds." Complementary to context retrieval, not a replacement.
 
 ## 7 · Decision points
 

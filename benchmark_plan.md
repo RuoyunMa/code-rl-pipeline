@@ -1,6 +1,6 @@
 # Benchmark plan — post-pivot 2026-05-19
 
-After Ruoyun raised the contamination concern + asked to align with Cursor Composer 2's
+After raising the contamination concern + asking to align with Cursor Composer 2's
 benchmark stack (Terminal-Bench 2.0 / SWE-Bench Multilingual), here's the revised
 benchmark strategy.
 
@@ -48,7 +48,7 @@ as headline metrics. For our 1.5B/7B fine-tuning project these are not all feasi
 
 - **Status:** added for 7B model only
 - **Size:** sample 50-100 tasks from the 500-task Verified set
-- **Why:** real GitHub issue resolution, much closer to Trae's actual product
+- **Why:** real GitHub issue resolution — much closer to actual IDE-assistant product workflows than synthetic HumanEval-style tasks
 - **Expected score:** 1.5B → likely 0-1%, not useful. 7B Qwen2.5-Coder → likely 5-15%
 - **Eval cost:** ~5-10 min per task (clone repo, apply patch, run pytest in container);
   50 tasks ≈ 4-8 hours

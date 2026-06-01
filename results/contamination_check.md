@@ -1,7 +1,7 @@
 # Contamination check — SFT data vs HumanEval
 
 **Date:** 2026-05-19
-**Question raised by:** Ruoyun — is Qwen2.5-Coder-1.5B already trained on HumanEval / MBPP such that our SFT on Magicoder-similar data is just teaching the answers?
+**Question:** is Qwen2.5-Coder-1.5B already trained on HumanEval / MBPP such that our SFT on Magicoder-similar data is just teaching the answers?
 
 ## TL;DR
 

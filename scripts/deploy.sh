@@ -13,7 +13,7 @@
 
 set -euo pipefail
 
-REMOTE="${REMOTE:?ERROR: set REMOTE=user@host (e.g. REMOTE=ruoyun@5090.ts.net)}"
+REMOTE="${REMOTE:?ERROR: set REMOTE=user@host (e.g. REMOTE=alice@gpu.example.ts.net)}"
 REMOTE_DIR="${REMOTE_DIR:-~/workspace/code-rl-pipeline}"
 SRC_DIR="$(cd "$(dirname "$0")/.."; pwd)"
 

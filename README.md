@@ -28,12 +28,6 @@ Best generic-purpose model: **7B DPO** (`outputs/7B_dpo_merged`). Best per-repo 
 
 Single-GPU budget: **~9h GPU time on a single RTX 5090 32GB** produced all of this. **QLoRA at 7B matches bf16 LoRA** across all benchmarks while using 14 GB instead of 24 GB.
 
-## Why this exists
-
-Built as a 2-week proof I can run the full LLM post-training stack independently — to transition from recommendation-systems infra to LLM post-training, specifically for [Trae](https://www.trae.ai/) (ByteDance's AI coding agent). Not chasing SOTA; chasing **pipeline-correct + measurable positive delta + reproducible on commodity hardware**.
-
-Full motivation, design decisions, and an honest experimental writeup in [`results/final_summary.md`](results/final_summary.md).
-
 ## Quick reproduce
 
 Tested on Ubuntu 24.04, RTX 5090, driver ≥ 595, CUDA toolkit 13.0 (provided via conda-forge).

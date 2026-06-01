@@ -32,7 +32,7 @@
 
 ## Honest experimental findings
 
-These are the things worth bringing up in interviews — they show real engineering / ML judgment, not bench-chasing.
+These are the findings worth highlighting in a technical writeup — real engineering / ML judgment, not bench-chasing.
 
 ### 1. HumanEval ceiling effect (renumbered — see also #2 below for multi-temp finding)
 
@@ -99,13 +99,18 @@ logs/                      every long-running script's stdout
 ## What's NOT done (and why)
 
 - **verl Docker GRPO**: needs docker.io + nvidia-container-toolkit installation, both require sudo which I didn't have during the autonomous run. The trl fallback exercised the full GRPO algorithm path; verl Docker would mainly validate the production deployment story.
-- **GitHub public repo**: needs `gh auth login` (interactive). Ready to push when Ruoyun is awake.
+- **GitHub public repo**: needs `gh auth login` (interactive). Ready to push when the user is back.
 - **W&B logging**: needs `wandb login` (interactive). Used NO_WANDB=1 for all runs. Curves are in the per-run logs.
 - **SWE-bench Verified small subset eval**: optional per CLAUDE.md, didn't pursue tonight.
 - **Tech blog draft**: deferred — easier to write with all the numbers in hand.
 
-## Suggested narrative for the Trae interview
+## Key takeaways
 
-> "I built an end-to-end SFT → DPO → GRPO + AWQ post-training pipeline for Qwen2.5-Coder-1.5B on a single RTX 5090 (Blackwell sm_120, CUDA 13). The deployable DPO model gives +1.2pp HumanEval / +3.5pp MBPP over a 73%/63% baseline.
->
-> Four findings worth talking about: (1) **Baseline measurement matters** — I caught a 11pp gap between the planning doc's assumed baseline (62%) and reality (73%) on D1, before training, which let me reset acceptance thresholds to realistic +1-3% gains. (2) **Multi-temperature rollouts unlocked DPO** — naive single-temp (T=0.8) gave 425 pairs from 128 mixed-outcome problems; switching to T=0.4 + 0.8 + 1.2 gave 2320 pairs from 232 problems, and the DPO trainer's rewards/accuracies climbed 0.39 → 0.78. Within-prompt correlation was the real bottleneck, not number-of-candidates. (3) **DPO beat GRPO at this scale** — 2320 pairs / 145 DPO steps outperformed 300 prompts / 200 GRPO steps. GRPO's advantage shows at much larger data volumes and with verl + vllm-rollout integration; for a single-evening demo, DPO is the right call. (4) **AWQ INT4 was 2.3× SLOWER than bf16** at 1.5B params on Blackwell, because at this size memory bandwidth isn't the bottleneck — quantization is a tool for scale-up, not a free speedup. These are the kinds of judgment calls I'd bring to Trae's coding-model team."
+End-to-end SFT → DPO → GRPO + AWQ post-training pipeline for Qwen2.5-Coder-1.5B on a single RTX 5090 (Blackwell sm_120, CUDA 13). The deployable DPO model gives +1.2pp HumanEval / +3.5pp MBPP over a 73%/63% baseline.
+
+Four findings worth highlighting:
+
+1. **Baseline measurement matters** — caught an 11pp gap between the planning doc's assumed baseline (62%) and reality (73%) on D1, before training, which forced resetting acceptance thresholds to realistic +1-3% gains.
+2. **Multi-temperature rollouts unlocked DPO** — naive single-temp (T=0.8) gave 425 pairs from 128 mixed-outcome problems; T=0.4 + 0.8 + 1.2 gave 2320 pairs from 232 problems, and the DPO trainer's rewards/accuracies climbed 0.39 → 0.78. Within-prompt correlation was the real bottleneck, not number-of-candidates.
+3. **DPO beat GRPO at this scale** — 2320 pairs / 145 DPO steps outperformed 300 prompts / 200 GRPO steps. GRPO's advantage shows at much larger data volumes and with verl + vllm-rollout integration; for a single-evening run, DPO is the right call.
+4. **AWQ INT4 was 2.3× slower than bf16** at 1.5B params on Blackwell, because at this size memory bandwidth isn't the bottleneck — quantization is a tool for scale-up, not a free speedup.
