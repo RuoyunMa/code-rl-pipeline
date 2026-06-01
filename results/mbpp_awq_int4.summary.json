@@ -1,0 +1,10 @@
+{
+  "benchmark": "mbpp",
+  "split": "sanitized",
+  "model": "outputs/dpo_awq_int4",
+  "pass@1": 0.6459143968871596,
+  "n_pass": 166,
+  "total": 257,
+  "temperature": 0.0,
+  "n_samples": 1
+}

@@ -1,0 +1,9 @@
+{
+  "variant": "B1_r32_attn",
+  "train_sec": 1267,
+  "eval_sec": 69,
+  "humaneval_pass1": 0.7317073170731707,
+  "humaneval_n_pass": 120,
+  "mbpp_pass1": 0.6536964980544747,
+  "mbpp_n_pass": 168
+}

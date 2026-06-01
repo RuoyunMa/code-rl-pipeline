@@ -1,0 +1,10 @@
+{
+  "benchmark": "mbpp",
+  "split": "sanitized",
+  "model": "Qwen/Qwen2.5-Coder-1.5B-Instruct",
+  "pass@1": 0.6342412451361867,
+  "n_pass": 163,
+  "total": 257,
+  "temperature": 0.0,
+  "n_samples": 1
+}

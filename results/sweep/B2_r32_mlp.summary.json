@@ -1,0 +1,9 @@
+{
+  "variant": "B2_r32_mlp",
+  "train_sec": 1274,
+  "eval_sec": 57,
+  "humaneval_pass1": 0.7317073170731707,
+  "humaneval_n_pass": 120,
+  "mbpp_pass1": 0.6653696498054474,
+  "mbpp_n_pass": 171
+}

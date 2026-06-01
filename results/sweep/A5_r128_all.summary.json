@@ -1,0 +1,9 @@
+{
+  "variant": "A5_r128_all",
+  "train_sec": 1335,
+  "eval_sec": 67,
+  "humaneval_pass1": 0.7439024390243902,
+  "humaneval_n_pass": 122,
+  "mbpp_pass1": 0.6964980544747081,
+  "mbpp_n_pass": 179
+}

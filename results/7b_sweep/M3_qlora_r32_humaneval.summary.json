@@ -1,0 +1,9 @@
+{
+  "benchmark": "humaneval",
+  "model": "outputs/7B_M3_qlora_r32_merged",
+  "pass@1": 0.8658536585365854,
+  "n_pass": 142,
+  "total": 164,
+  "temperature": 0.0,
+  "n_samples": 1
+}

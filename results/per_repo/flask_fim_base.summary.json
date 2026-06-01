@@ -1,0 +1,8 @@
+{
+  "model": "outputs/dpo_v2_merged",
+  "n": 24,
+  "exact_match": 0.0,
+  "edit_similarity_mean": 0.060742782621518575,
+  "symbol_recall_mean": 0.2726653043262632,
+  "gen_sec": 1.1
+}

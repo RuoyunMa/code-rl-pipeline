@@ -1,0 +1,12 @@
+{
+  "variant": "M3_qlora_r32",
+  "train_sec": 2670,
+  "eval_sec": 804,
+  "humaneval_pass1": 0.8658536585365854,
+  "humaneval_n_pass": 142,
+  "mbpp_pass1": 0.8171206225680934,
+  "mbpp_n_pass": 210,
+  "lcb_pass1": 0.36486486486486486,
+  "lcb_n_pass": 162,
+  "lcb_post_cutoff_pass1": 0.14705882352941177
+}

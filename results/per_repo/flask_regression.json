@@ -1,0 +1,21 @@
+{
+  "model": "outputs/per_repo/flask_merged",
+  "humaneval": {
+    "pass@1": 0.7439024390243902,
+    "vs_dpo_v2_base": 0.0
+  },
+  "mbpp": {
+    "pass@1": 0.6575875486381323,
+    "vs_dpo_v2_base": -1.1673151750972721
+  },
+  "lcb": {
+    "pass@1": 0.16216216216216217,
+    "vs_dpo_v2_base": -0.4504504504504486
+  },
+  "lcb_post_cutoff": {
+    "cutoff_date": "2024-09-18",
+    "pass": 5,
+    "total": 136,
+    "pass@1": 0.03676470588235294
+  }
+}

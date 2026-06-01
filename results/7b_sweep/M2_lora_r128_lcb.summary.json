@@ -1,0 +1,37 @@
+{
+  "benchmark": "livecodebench_v6",
+  "model": "outputs/7B_M2_lora_r128_merged",
+  "pass@1": 0.36486486486486486,
+  "n_pass": 162,
+  "total": 444,
+  "temperature": 0.0,
+  "n_samples": 1,
+  "gen_sec": 28.4,
+  "grade_sec": 722.8,
+  "by_difficulty": {
+    "easy": {
+      "pass": 87,
+      "total": 135,
+      "pass@1": 0.6444444444444445
+    },
+    "medium": {
+      "pass": 69,
+      "total": 207,
+      "pass@1": 0.3333333333333333
+    },
+    "hard": {
+      "pass": 6,
+      "total": 102,
+      "pass@1": 0.058823529411764705
+    }
+  },
+  "post_cutoff_subset": {
+    "cutoff_date": "2024-09-18",
+    "pass": 21,
+    "total": 136,
+    "pass@1": 0.15441176470588236
+  },
+  "platforms": [
+    "leetcode"
+  ]
+}

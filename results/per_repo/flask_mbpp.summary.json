@@ -1,0 +1,10 @@
+{
+  "benchmark": "mbpp",
+  "split": "sanitized",
+  "model": "outputs/per_repo/flask_merged",
+  "pass@1": 0.6575875486381323,
+  "n_pass": 169,
+  "total": 257,
+  "temperature": 0.0,
+  "n_samples": 1
+}

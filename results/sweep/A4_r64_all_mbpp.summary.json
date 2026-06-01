@@ -1,0 +1,10 @@
+{
+  "benchmark": "mbpp",
+  "split": "sanitized",
+  "model": "outputs/A4_r64_all_merged",
+  "pass@1": 0.6614785992217899,
+  "n_pass": 170,
+  "total": 257,
+  "temperature": 0.0,
+  "n_samples": 1
+}

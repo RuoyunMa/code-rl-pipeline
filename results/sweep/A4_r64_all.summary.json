@@ -1,0 +1,9 @@
+{
+  "variant": "A4_r64_all",
+  "train_sec": 1279,
+  "eval_sec": 0,
+  "humaneval_pass1": 0.7073170731707317,
+  "humaneval_n_pass": 116,
+  "mbpp_pass1": 0.6614785992217899,
+  "mbpp_n_pass": 170
+}

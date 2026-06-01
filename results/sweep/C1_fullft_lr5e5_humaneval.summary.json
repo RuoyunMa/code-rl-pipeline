@@ -1,0 +1,9 @@
+{
+  "benchmark": "humaneval",
+  "model": "outputs/C1_fullft_lr5e5",
+  "pass@1": 0.7317073170731707,
+  "n_pass": 120,
+  "total": 164,
+  "temperature": 0.0,
+  "n_samples": 1
+}

@@ -1,0 +1,8 @@
+{
+  "model": "outputs/per_repo/fastapi_merged",
+  "n": 300,
+  "exact_match": 0.0,
+  "edit_similarity_mean": 0.1312972953488417,
+  "symbol_recall_mean": 0.40509425969004115,
+  "gen_sec": 3.4
+}

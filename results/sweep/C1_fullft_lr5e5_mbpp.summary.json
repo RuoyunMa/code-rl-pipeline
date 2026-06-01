@@ -1,0 +1,10 @@
+{
+  "benchmark": "mbpp",
+  "split": "sanitized",
+  "model": "outputs/C1_fullft_lr5e5",
+  "pass@1": 0.7042801556420234,
+  "n_pass": 181,
+  "total": 257,
+  "temperature": 0.0,
+  "n_samples": 1
+}

@@ -1,0 +1,12 @@
+{
+  "variant": "M4_qlora_r128",
+  "train_sec": 2672,
+  "eval_sec": 787,
+  "humaneval_pass1": 0.8536585365853658,
+  "humaneval_n_pass": 140,
+  "mbpp_pass1": 0.7976653696498055,
+  "mbpp_n_pass": 205,
+  "lcb_pass1": 0.36936936936936937,
+  "lcb_n_pass": 164,
+  "lcb_post_cutoff_pass1": 0.16911764705882354
+}

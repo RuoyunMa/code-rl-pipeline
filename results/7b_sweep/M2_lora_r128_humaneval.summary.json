@@ -1,0 +1,9 @@
+{
+  "benchmark": "humaneval",
+  "model": "outputs/7B_M2_lora_r128_merged",
+  "pass@1": 0.8597560975609756,
+  "n_pass": 141,
+  "total": 164,
+  "temperature": 0.0,
+  "n_samples": 1
+}

@@ -1,0 +1,37 @@
+{
+  "benchmark": "livecodebench_v6",
+  "model": "outputs/grpo_200_merged",
+  "pass@1": 0.16891891891891891,
+  "n_pass": 75,
+  "total": 444,
+  "temperature": 0.0,
+  "n_samples": 1,
+  "gen_sec": 8.1,
+  "grade_sec": 460.0,
+  "by_difficulty": {
+    "easy": {
+      "pass": 55,
+      "total": 135,
+      "pass@1": 0.4074074074074074
+    },
+    "medium": {
+      "pass": 20,
+      "total": 207,
+      "pass@1": 0.0966183574879227
+    },
+    "hard": {
+      "pass": 0,
+      "total": 102,
+      "pass@1": 0.0
+    }
+  },
+  "post_cutoff_subset": {
+    "cutoff_date": "2024-09-18",
+    "pass": 5,
+    "total": 136,
+    "pass@1": 0.03676470588235294
+  },
+  "platforms": [
+    "leetcode"
+  ]
+}

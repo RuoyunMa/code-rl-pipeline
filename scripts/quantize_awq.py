@@ -64,7 +64,7 @@ def quantize(args) -> None:
             {"role": "user", "content": ex[pf]},
             {"role": "assistant", "content": ex[sf]},
         ]
-        return tokenizer.apply_chat_template(msgs, tokenize=False, add_generation_prompt=False)
+        return tokenizer.apply_chat_template(msgs, tokenize=False, add_generation_prompt=False)  # noqa: F821 — closure capture of `tokenizer` from enclosing scope; ruff's static analysis misses this
 
     calib_data = [fmt(ex) for ex in ds]
 

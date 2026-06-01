@@ -1,0 +1,37 @@
+{
+  "benchmark": "livecodebench_v6",
+  "model": "Qwen/Qwen2.5-Coder-1.5B-Instruct",
+  "pass@1": 0.13513513513513514,
+  "n_pass": 60,
+  "total": 444,
+  "temperature": 0.0,
+  "n_samples": 1,
+  "gen_sec": 8.3,
+  "grade_sec": 535.1,
+  "by_difficulty": {
+    "easy": {
+      "pass": 48,
+      "total": 135,
+      "pass@1": 0.35555555555555557
+    },
+    "medium": {
+      "pass": 12,
+      "total": 207,
+      "pass@1": 0.057971014492753624
+    },
+    "hard": {
+      "pass": 0,
+      "total": 102,
+      "pass@1": 0.0
+    }
+  },
+  "post_cutoff_subset": {
+    "cutoff_date": "2024-09-18",
+    "pass": 4,
+    "total": 136,
+    "pass@1": 0.029411764705882353
+  },
+  "platforms": [
+    "leetcode"
+  ]
+}

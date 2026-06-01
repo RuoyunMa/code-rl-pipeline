@@ -1,0 +1,10 @@
+{
+  "benchmark": "mbpp",
+  "split": "sanitized",
+  "model": "outputs/B1_r32_attn_merged",
+  "pass@1": 0.6536964980544747,
+  "n_pass": 168,
+  "total": 257,
+  "temperature": 0.0,
+  "n_samples": 1
+}

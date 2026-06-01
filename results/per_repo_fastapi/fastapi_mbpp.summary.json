@@ -1,0 +1,10 @@
+{
+  "benchmark": "mbpp",
+  "split": "sanitized",
+  "model": "outputs/per_repo/fastapi_merged",
+  "pass@1": 0.6731517509727627,
+  "n_pass": 173,
+  "total": 257,
+  "temperature": 0.0,
+  "n_samples": 1
+}

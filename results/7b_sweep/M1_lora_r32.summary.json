@@ -1,0 +1,12 @@
+{
+  "variant": "M1_lora_r32",
+  "train_sec": 2572,
+  "eval_sec": 834,
+  "humaneval_pass1": 0.8536585365853658,
+  "humaneval_n_pass": 140,
+  "mbpp_pass1": 0.8210116731517509,
+  "mbpp_n_pass": 211,
+  "lcb_pass1": 0.36936936936936937,
+  "lcb_n_pass": 164,
+  "lcb_post_cutoff_pass1": 0.16176470588235295
+}

@@ -1,0 +1,37 @@
+{
+  "benchmark": "livecodebench_v6",
+  "model": "outputs/A5_r128_all_merged",
+  "pass@1": 0.19144144144144143,
+  "n_pass": 85,
+  "total": 444,
+  "temperature": 0.0,
+  "n_samples": 1,
+  "gen_sec": 8.0,
+  "grade_sec": 539.3,
+  "by_difficulty": {
+    "easy": {
+      "pass": 58,
+      "total": 135,
+      "pass@1": 0.42962962962962964
+    },
+    "medium": {
+      "pass": 26,
+      "total": 207,
+      "pass@1": 0.12560386473429952
+    },
+    "hard": {
+      "pass": 1,
+      "total": 102,
+      "pass@1": 0.00980392156862745
+    }
+  },
+  "post_cutoff_subset": {
+    "cutoff_date": "2024-09-18",
+    "pass": 7,
+    "total": 136,
+    "pass@1": 0.051470588235294115
+  },
+  "platforms": [
+    "leetcode"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "variant": "7B_dpo",
+  "humaneval_pass1": 0.8536585365853658,
+  "humaneval_n_pass": 140,
+  "mbpp_pass1": 0.8210116731517509,
+  "mbpp_n_pass": 211,
+  "lcb_pass1": 0.38288288288288286,
+  "lcb_n_pass": 170,
+  "lcb_post_cutoff_pass1": 0.17647058823529413
+}

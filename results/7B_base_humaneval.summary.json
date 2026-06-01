@@ -1,0 +1,9 @@
+{
+  "benchmark": "humaneval",
+  "model": "Qwen/Qwen2.5-Coder-7B-Instruct",
+  "pass@1": 0.8597560975609756,
+  "n_pass": 141,
+  "total": 164,
+  "temperature": 0.0,
+  "n_samples": 1
+}

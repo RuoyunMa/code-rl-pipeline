@@ -1,0 +1,10 @@
+{
+  "benchmark": "mbpp",
+  "split": "sanitized",
+  "model": "outputs/7B_M2_lora_r128_merged",
+  "pass@1": 0.8015564202334631,
+  "n_pass": 206,
+  "total": 257,
+  "temperature": 0.0,
+  "n_samples": 1
+}

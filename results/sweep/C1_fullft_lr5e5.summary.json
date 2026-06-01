@@ -1,0 +1,9 @@
+{
+  "variant": "C1_fullft_lr5e5",
+  "train_sec": 691,
+  "eval_sec": 79,
+  "humaneval_pass1": 0.7317073170731707,
+  "humaneval_n_pass": 120,
+  "mbpp_pass1": 0.7042801556420234,
+  "mbpp_n_pass": 181
+}

@@ -142,7 +142,7 @@ def main():
         n=args.n,
     )
 
-    print(f"Generating ...")
+    print("Generating ...")
     outputs = llm.generate(prompt_texts, sp)
 
     Path(args.out).parent.mkdir(parents=True, exist_ok=True)

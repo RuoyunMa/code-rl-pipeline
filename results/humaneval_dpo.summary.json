@@ -1,0 +1,9 @@
+{
+  "benchmark": "humaneval",
+  "model": "outputs/dpo_merged",
+  "pass@1": 0.75,
+  "n_pass": 123,
+  "total": 164,
+  "temperature": 0.0,
+  "n_samples": 1
+}

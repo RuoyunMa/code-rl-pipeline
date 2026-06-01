@@ -1,0 +1,10 @@
+{
+  "benchmark": "mbpp",
+  "split": "sanitized",
+  "model": "outputs/7B_M3_qlora_r32_merged",
+  "pass@1": 0.8171206225680934,
+  "n_pass": 210,
+  "total": 257,
+  "temperature": 0.0,
+  "n_samples": 1
+}

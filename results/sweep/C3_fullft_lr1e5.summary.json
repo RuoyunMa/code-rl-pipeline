@@ -1,0 +1,9 @@
+{
+  "variant": "C3_fullft_lr1e5",
+  "train_sec": 690,
+  "eval_sec": 65,
+  "humaneval_pass1": 0.725609756097561,
+  "humaneval_n_pass": 119,
+  "mbpp_pass1": 0.642023346303502,
+  "mbpp_n_pass": 165
+}

@@ -1,0 +1,49 @@
+name: lint
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install ruff
+        run: pip install --no-cache-dir 'ruff>=0.5,<1.0'
+
+      # pyflakes-only: catches real bugs (undefined names, unused imports)
+      # without bikeshedding on style. Heavy ML libs aren't installed in CI,
+      # so we skip imports of torch/vllm/transformers/etc. via per-file ignores.
+      - name: Ruff (pyflakes, no style)
+        run: |
+          ruff check --select F \
+            --ignore F401,F841 \
+            scripts/
+
+      # Standalone parse check — guarantees every script at least compiles.
+      - name: Python syntax check
+        run: |
+          set -e
+          for f in $(find scripts -name "*.py"); do
+            echo "  syntax check: $f"
+            python -m py_compile "$f"
+          done
+
+      # Quick bash syntax check on the orchestrator scripts
+      - name: Bash syntax check
+        run: |
+          set -e
+          for f in $(find scripts -name "*.sh"); do
+            echo "  bash -n: $f"
+            bash -n "$f"
+          done

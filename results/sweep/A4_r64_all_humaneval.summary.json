@@ -1,0 +1,9 @@
+{
+  "benchmark": "humaneval",
+  "model": "outputs/A4_r64_all_merged",
+  "pass@1": 0.7073170731707317,
+  "n_pass": 116,
+  "total": 164,
+  "temperature": 0.0,
+  "n_samples": 1
+}

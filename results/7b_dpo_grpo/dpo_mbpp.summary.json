@@ -1,0 +1,10 @@
+{
+  "benchmark": "mbpp",
+  "split": "sanitized",
+  "model": "outputs/7B_dpo_merged",
+  "pass@1": 0.8210116731517509,
+  "n_pass": 211,
+  "total": 257,
+  "temperature": 0.0,
+  "n_samples": 1
+}
