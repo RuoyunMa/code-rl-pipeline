@@ -1,0 +1,31 @@
+# trained artifacts (regen via scripts/) — too big and not source
+outputs/
+data/
+logs/
+wandb/
+*.safetensors
+*.bin
+*.pt
+*.ckpt
+
+# eval per-problem dumps (kept summary jsons in results/sweep/, drop big jsonl)
+results/sweep/*_humaneval.jsonl
+results/sweep/*_mbpp.jsonl
+results/sweep/*_livecodebench.jsonl
+
+# Claude Code internals — not project source
+.claude/
+CLAUDE.md
+
+# python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.ipynb_checkpoints/
+
+# macOS / editor cruft
+.DS_Store
+.idea/
+.vscode/
+*.swp
