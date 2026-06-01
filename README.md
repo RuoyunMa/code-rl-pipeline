@@ -1,5 +1,8 @@
 # code-rl-pipeline
 
+[![lint](https://github.com/RuoyunMa/code-rl-pipeline/actions/workflows/lint.yml/badge.svg)](https://github.com/RuoyunMa/code-rl-pipeline/actions/workflows/lint.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 End-to-end post-training pipeline for a coding LLM on a **single RTX 5090 (32 GB Blackwell, sm_120, CUDA 13)**.
 SFT → DPO → GRPO (trl fallback) → AWQ INT4 deployment, with a verifiable-reward grader (passes unit tests) wiring DPO/GRPO.
 
